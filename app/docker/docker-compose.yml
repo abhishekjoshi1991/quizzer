@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: quizzer_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: quizzer
+      POSTGRES_PASSWORD: quizzer123
+      POSTGRES_DB: quizzer_db
+      TZ: Asia/Kolkata      # <-- correct timezone
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

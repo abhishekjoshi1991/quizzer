@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from app.routers.user import router as user_router
+from app.routers.user_route import router as user_router
 from app.database import Base, engine
 from app.models.model import User # this need else table won't created
 
