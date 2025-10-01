@@ -5,10 +5,11 @@ class UserBase(BaseModel):
     last_name : str
     email : EmailStr
 
-
 class UserCreate(UserBase):
     password : str
 
-
 class UserResponse(UserBase):
     id : int
+
+class UserResponseWrapper(BaseModel):
+    user: UserResponse
