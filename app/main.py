@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 from app.routers.user_route import router as user_router
 from app.database import Base, engine
 from app.models.model import User # this need else table won't created
+from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -17,6 +18,17 @@ def create_app() -> FastAPI:
         version="1.0.0",
         lifespan=lifespan
     )
+
+    origins = ["*"]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
     app.include_router(user_router)
     return app
 
