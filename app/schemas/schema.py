@@ -13,3 +13,10 @@ class UserResponse(UserBase):
 
 class UserResponseWrapper(BaseModel):
     user: UserResponse
+
+class UserLogin(BaseModel):
+    email : EmailStr
+    password : str
+
+class UserTypeSchema(BaseModel):
+    id: int
